@@ -64,5 +64,4 @@ class show_port_stats(app_manager.RyuApp):
         self.logger.info('---------------------------------------------')
 
         for stat in sorted (body, key =attrgetter('port_no')):
-            self.logger.info(stat)
             self.logger.info("datapath_id=%d, in_port=%d, rx_packets=%d, rx_bytes=%d, rx_errors=%d, tx_packets=%d, tx_bytes=%d, tx_errors=%d", ev.msg.datapath.id,stat.port_no,stat.rx_packets,stat.rx_bytes,stat.rx_errors,stat.tx_packets,stat.tx_bytes,stat.tx_errors)
