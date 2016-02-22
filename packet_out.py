@@ -39,24 +39,29 @@ class SAMPLE_APP(app_manager.RyuApp):
                            dst_ip = dst_ip))
 
           pkt.serialize()
-#          self.logger.info("%d (%d) send ARP request:%s" % (datapath.id, 3, pkt))
+          self.logger.info("%d (%d) send ARP request:%s" % (datapath.id, 3, pkt))
           data = pkt.data
-#          actions = [parser.OFPActionOutput(port = 3)]
-#          out = parser.OFPPacketOut(datapath = datapath, buffer_id = ofproto.OFP_NO_BUFFER,
-#                                    in_port = ofproto.OFPP_CONTROLLER, actions = actions,
-#                                    data = data)
-#          datapath.send_msg(out)
+          actions = [parser.OFPActionOutput(port = 3)]
+          out = parser.OFPPacketOut(datapath = datapath, buffer_id = ofproto.OFP_NO_BUFFER,
+                                    in_port = ofproto.OFPP_CONTROLLER, actions = actions,
+                                    data = data)
+          datapath.send_msg(out)
+
  
+          self.logger.info("%d (%d) send ARP request:%s" % (datapath.id, 2, pkt))
           actions = [parser.OFPActionOutput(port = 2)]
           out = parser.OFPPacketOut(datapath = datapath, buffer_id = ofproto.OFP_NO_BUFFER,
                                     in_port = ofproto.OFPP_CONTROLLER, actions = actions,            
                                     data = data)
           datapath.send_msg(out)
+
+
+          self.logger.info("%d (%d) send ARP request:%s" % (datapath.id, 1, pkt))
           actions = [parser.OFPActionOutput(port = 1)]
           out = parser.OFPPacketOut(datapath = datapath, buffer_id = ofproto.OFP_NO_BUFFER,
                                     in_port = ofproto.OFPP_CONTROLLER, actions = actions,
                                     data = data)
           datapath.send_msg(out)
 
-          self.logger.info("packet out")
-          time.sleep(60)
+          self.logger.info("*****packet out*****")
+          time.sleep(3)
